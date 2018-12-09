@@ -52,5 +52,35 @@ def print_hexagram():
     for line in paper:
         print(line)
 
+def print_progression():
+    lines = []
+    for i, line in enumerate(paper):
+        if i == 3:
+            sep = '\t=======\\\t'
+        elif i == 4:
+            sep = '\t=======/\t'
+        else:
+            sep = '\t\t\t'
+
+        if 'ϴ' in line:
+            lines.append(sep.join(['---','- -']))
+        elif 'X' in line:
+            lines.append(sep.join(['- -','---']))
+        else:
+            lines.append(sep.join([line, line]))
+
+    print('\n'.join(lines))
+
+def print_changes():
+    for i, line in enumerate(paper):
+        if 'ϴ' in line or 'X' in line:
+            print("Line %d is changing." % i)
+
+
+
 cast()
 print_hexagram()
+print('')
+print_progression()
+print('')
+print_changes()
